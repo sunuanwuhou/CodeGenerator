@@ -8,7 +8,9 @@ import com.anso.common.base.BaseService;
 import java.util.List;
 
 /**
-* Created by zhoufei on 2018/1/11.
+* @author ${auth}
+* @Description:${domainNameDesc}controller
+* @date ${time}
 */
 public interface ${domainName}Service extends BaseService<${domainName},${domainName}Example> {
 

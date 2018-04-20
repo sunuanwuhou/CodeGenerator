@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
-* Created by zhoufei on 2018/1/10.
+* @author ${auth}
+* @Description:${domainNameDesc}controller
+* @date ${time}
 */
 @RestController
 @RequestMapping("/${domain}")

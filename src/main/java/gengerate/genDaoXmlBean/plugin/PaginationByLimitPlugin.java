@@ -1,4 +1,4 @@
-package com.genDaoXmlBean.plugin;
+package gengerate.genDaoXmlBean.plugin;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;

@@ -21,9 +21,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
-* Created by zhoufei on 2018/1/11.
+* @author ${auth}
+* @Description:${domainNameDesc}controller
+* @date ${time}
 */
 @Service
+@Transactional
 @BaseService
 public class ${domainName}ServiceImpl extends BaseServiceImpl<${domainName}Mapper,${domainName},${domainName}Example> implements ${domainName}Service {
 

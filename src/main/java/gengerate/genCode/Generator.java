@@ -1,5 +1,6 @@
-package com.genCode;
+package gengerate.genCode;
 
+import gengerate.DateUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -22,12 +23,15 @@ public class Generator {
     private static String[] domainName1 = {"Role","DataRole"};
     //实体类描述
     private static String[] domainNameDesc1 = {"角色", "数据角色"};
-
-    private static int len = domainName1.length;
+    //类作者
+    private static  String auth="qiumeng";
+    //生成类时间
+    private static  String time=DateUtils.getStringDate();
     // 包名
     private static String packageName = "com.anso.auth.server.web";
-    //
+
     static String templateDir = "\\src\\main\\resources\\vm\\";
+    private static int len = domainName1.length;
     // 完整模板路径
     static String sourcePath = System.getProperty("user.dir")+templateDir;
 
@@ -69,6 +73,8 @@ public class Generator {
             context.put("packageName", packageName);
             context.put("domain", firstCharToLowCase(domainName));
             context.put("domainNameDesc",domainNameDesc);
+            context.put("auth",auth);
+            context.put("time",time);
 
             Template t = ve.getTemplate(templateFile, "UTF-8");
 

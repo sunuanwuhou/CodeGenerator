@@ -53,9 +53,9 @@
         </table>
         <table schema="" tableName="Recording" domainObjectName="Recording">
         </table>
-        <!--<table schema="" tableName="base_role" domainObjectName="Role">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
+        <table schema="" tableName="base_role" domainObjectName="Role">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
         <!--<table schema="" tableName="base_user" domainObjectName="User">-->
             <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
         <!--</table>-->
