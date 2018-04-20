@@ -1,0 +1,64 @@
+package ${packageName}.service.impl;
+
+import ${packageName}.dao.${domainName}Mapper;
+import ${packageName}.entity.${domainName};
+import ${packageName}.entity.${domainName}Example;
+import ${packageName}.form.${domainName}Form;
+import ${packageName}.service.${domainName}Service;
+import com.anso.common.annotation.BaseService;
+import com.anso.common.base.BaseServiceImpl;
+import com.anso.common.exception.ExceptionMsg;
+import com.anso.common.exception.ServiceException;
+import com.anso.common.util.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+* Created by zhoufei on 2018/1/11.
+*/
+@Service
+@BaseService
+public class ${domainName}ServiceImpl extends BaseServiceImpl<${domainName}Mapper,${domainName},${domainName}Example> implements ${domainName}Service {
+
+
+    @Autowired
+    private ${domainName}Mapper ${domain}Mapper;
+
+
+
+    @Override
+    @Transactional
+    public int save(${domainName}Form ${domain}Form) {
+        ${domainName} ${domain} = new ${domainName}();
+        BeanUtils.copyProperties(${domain}Form,${domain});
+        ${domain}.setCreateTime(new Timestamp(new Date().getTime()));
+        this.insertSelective(${domain});
+        return ${domain}.getId();
+    }
+
+    @Override
+    @Transactional
+    public void edit(int id , ${domainName}Form ${domain}Form) {
+        ${domainName} ${domain} = this.selectByPrimaryKey(id);
+        BeanUtils.copyProperties(${domain}Form,${domain});
+        ${domain}.setUpdateTime(new Timestamp(new Date().getTime()));
+        this.${domain}Mapper.updateByPrimaryKeySelective(${domain});
+    }
+
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        this.deleteByPrimaryKey(id);
+    }
+
+
+
+}

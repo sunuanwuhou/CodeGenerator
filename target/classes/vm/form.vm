@@ -1,0 +1,11 @@
+package ${packageName}.form;
+
+import ${packageName}.entity.${domainName};
+
+/**
+* Created by zhoufei on 2018/3/7.
+*/
+public class ${domainName}Form extends ${domainName}{
+
+
+}

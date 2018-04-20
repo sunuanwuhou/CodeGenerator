@@ -1,0 +1,82 @@
+package ${packageName}.controller;
+
+import ${packageName}.entity.${domainName}Example;
+import ${packageName}.form.${domainName}Form;
+import ${packageName}.service.${domainName}Service;
+import com.anso.common.result.BaseResult;
+import com.anso.common.result.ResultCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+* Created by zhoufei on 2018/1/10.
+*/
+@RestController
+@RequestMapping("/${domain}")
+public class ${domainName}Controller {
+
+
+    @Autowired
+    private ${domainName}Service ${domain}Service;
+
+    /**
+    * 获取${domainNameDesc}列表
+    * @return
+    */
+    @GetMapping
+    public BaseResult  get${domainName}List(){
+        ${domainName}Example ${domain}Example = new ${domainName}Example();
+        return new BaseResult(${domain}Service.selectByExample(${domain}Example));
+    }
+
+    /**
+    * 获取单个${domainNameDesc}信息
+    * @param id  ${domainNameDesc}ID
+    * @return ${domainNameDesc}信息
+    */
+    @GetMapping("/{id:\\d+}")
+    public BaseResult get${domainName}ById(@PathVariable("id")int id){
+      return new BaseResult(this.${domain}Service.selectByPrimaryKey(id));
+    }
+
+    /**
+    * 保存${domainNameDesc}
+    * @param ${domain}Form 表单信息
+    * @return 返回新增记录ID
+    */
+    @PostMapping
+    public BaseResult save( @RequestBody ${domainName}Form ${domain}Form){
+        return new BaseResult(${domain}Service.save(${domain}Form));
+    }
+
+
+    /**
+    * 编辑${domainNameDesc}
+    * @param id  编辑实体的ID
+    * @param ${domain}Form 表单信息
+    * @return
+    */
+    @PutMapping("/{id:\\d+}")
+    public BaseResult edit(@PathVariable("id") int id, @RequestBody ${domainName}Form ${domain}Form){
+        ${domain}Service.edit(id,${domain}Form);
+        return new BaseResult();
+    }
+
+    /**
+    * 编辑${domainNameDesc}
+    * @param id  删除实体的ID
+    * @return
+    */
+    @DeleteMapping
+    public BaseResult delete(@PathVariable("id") int id){
+        ${domain}Service.deleteByPrimaryKey(id);
+        return new BaseResult();
+    }
+
+
+
+
+
+
+}

@@ -1,0 +1,20 @@
+package ${packageName}.service;
+
+import ${packageName}.entity.${domainName}Example;
+import ${packageName}.entity.${domainName};
+import ${packageName}.form.${domainName}Form;
+import com.anso.common.base.BaseService;
+
+import java.util.List;
+
+/**
+* Created by zhoufei on 2018/1/11.
+*/
+public interface ${domainName}Service extends BaseService<${domainName},${domainName}Example> {
+
+    void edit(int id ,${domainName}Form userForm);
+
+    int save(${domainName}Form userForm);
+
+    void delete(int id);
+}

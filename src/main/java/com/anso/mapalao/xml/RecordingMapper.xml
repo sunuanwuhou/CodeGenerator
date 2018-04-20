@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anso.mapalao.dao.RecordingMapper" >
+  <resultMap id="BaseResultMap" type="com.anso.mapalao.entity.Recording" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="siteid" property="siteid" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="rst" property="rst" jdbcType="VARCHAR" />
+    <result column="ret" property="ret" jdbcType="VARCHAR" />
+    <result column="siteidtext" property="siteidtext" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, siteid, number, rst, ret, siteidtext, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.anso.mapalao.entity.RecordingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from recording
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.anso.mapalao.entity.RecordingExample" >
+    delete from recording
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.anso.mapalao.entity.Recording" >
+    insert into recording (id, siteid, number, 
+      rst, ret, siteidtext, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{siteid,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, 
+      #{rst,jdbcType=VARCHAR}, #{ret,jdbcType=VARCHAR}, #{siteidtext,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.anso.mapalao.entity.Recording" >
+    insert into recording
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="siteid != null" >
+        siteid,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="rst != null" >
+        rst,
+      </if>
+      <if test="ret != null" >
+        ret,
+      </if>
+      <if test="siteidtext != null" >
+        siteidtext,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="siteid != null" >
+        #{siteid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="rst != null" >
+        #{rst,jdbcType=VARCHAR},
+      </if>
+      <if test="ret != null" >
+        #{ret,jdbcType=VARCHAR},
+      </if>
+      <if test="siteidtext != null" >
+        #{siteidtext,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.anso.mapalao.entity.RecordingExample" resultType="java.lang.Integer" >
+    select count(*) from recording
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update recording
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteid != null" >
+        siteid = #{record.siteid,jdbcType=INTEGER},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rst != null" >
+        rst = #{record.rst,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ret != null" >
+        ret = #{record.ret,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteidtext != null" >
+        siteidtext = #{record.siteidtext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update recording
+    set id = #{record.id,jdbcType=INTEGER},
+      siteid = #{record.siteid,jdbcType=INTEGER},
+      number = #{record.number,jdbcType=VARCHAR},
+      rst = #{record.rst,jdbcType=VARCHAR},
+      ret = #{record.ret,jdbcType=VARCHAR},
+      siteidtext = #{record.siteidtext,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
