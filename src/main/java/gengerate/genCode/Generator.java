@@ -18,17 +18,17 @@ import java.util.Properties;
 public class Generator {
 
     //代码生成的路径
-    private static String genFilePath = "W:\\111\\";
+    private static String genFilePath = "E:\\IdeaProject\\git\\CodeGenerator\\src\\main\\java\\cfs\\";
     // 实体类名数组
-    private static String[] domainName1 = {"Role","DataRole"};
+    private static String[] domainName1 = {"File"};
     //实体类描述
-    private static String[] domainNameDesc1 = {"角色", "数据角色"};
+    private static String[] domainNameDesc1 = {"存储文件"};
     //类作者
     private static  String auth="qiumeng";
     //生成类时间
     private static  String time=DateUtils.getStringDate();
     // 包名
-    private static String packageName = "com.anso.auth.server.web";
+    private static String packageName = "com.anso.meter.server.web";
 
     static String templateDir = "\\src\\main\\resources\\vm\\";
     private static int len = domainName1.length;

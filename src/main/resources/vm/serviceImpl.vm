@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
 * @author ${auth}
-* @Description:${domainNameDesc}controller
+* @Description:${domainNameDesc}实现类
 * @date ${time}
 */
 @Service
@@ -37,27 +37,22 @@ public class ${domainName}ServiceImpl extends BaseServiceImpl<${domainName}Mappe
 
 
     @Override
-    @Transactional
     public int save(${domainName}Form ${domain}Form) {
         ${domainName} ${domain} = new ${domainName}();
         BeanUtils.copyProperties(${domain}Form,${domain});
-        ${domain}.setCreateTime(new Timestamp(new Date().getTime()));
         this.insertSelective(${domain});
-        return ${domain}.getId();
+        return 0;
     }
 
     @Override
-    @Transactional
     public void edit(int id , ${domainName}Form ${domain}Form) {
         ${domainName} ${domain} = this.selectByPrimaryKey(id);
         BeanUtils.copyProperties(${domain}Form,${domain});
-        ${domain}.setUpdateTime(new Timestamp(new Date().getTime()));
         this.${domain}Mapper.updateByPrimaryKeySelective(${domain});
     }
 
 
     @Override
-    @Transactional
     public void delete(int id) {
         this.deleteByPrimaryKey(id);
     }

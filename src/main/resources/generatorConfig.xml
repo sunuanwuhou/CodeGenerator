@@ -12,7 +12,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost/mapalao" userId="root"
+                        connectionURL="jdbc:mysql://localhost/think-water" userId="root"
                         password="root">
         </jdbcConnection>
         <!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
@@ -28,7 +28,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.anso.mapalao.entity"
+        <javaModelGenerator targetPackage="com.anso.meter.server.web.entity"
                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -36,27 +36,179 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.anso.mapalao.xml"
+        <sqlMapGenerator targetPackage="com.anso.meter.server.xml"
                          targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.anso.mapalao.dao"
+                             targetPackage="com.anso.meter.server.web.dao"
                              targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
+        <table schema="" tableName="base_file" domainObjectName="File">
+        <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
         <!-- 指定数据库表 -->
-        <table schema="" tableName="Record" domainObjectName="Record">
-        </table>
-        <table schema="" tableName="Recording" domainObjectName="Recording">
-        </table>
-        <table schema="" tableName="base_role" domainObjectName="Role">
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+        <!--<table schema="" tableName="tw_accountsinfo" domainObjectName="AccountsInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_batterychange" domainObjectName="BatteryChange">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_datalog" domainObjectName="DataLog">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_datalog_bak" domainObjectName="DataLogBak">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_dmameterdfn" domainObjectName="DmameterDfn">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_dmameterinfo" domainObjectName="DmameterInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_dmarptdayflux1" domainObjectName="DmarptDayFlux1">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_dmarptdayflux7" domainObjectName="DmarptDayFlux7">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_event" domainObjectName="Event">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_eventparam" domainObjectName="EventParam">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_eventtype" domainObjectName="EventType">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fluxprocess_s1" domainObjectName="FluxProcessS1">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fluxprocess_s2" domainObjectName="FluxProcessS2">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmcheck" domainObjectName="FmCheck">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmcheckfirst" domainObjectName="FmCheckFirst">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmcheckplan" domainObjectName="FmCheckPlan">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fminfo" domainObjectName="FmInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fminstallinfo" domainObjectName="FmInstallInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmlastdata" domainObjectName="FmLastData">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmnouserreaddataflux" domainObjectName="FmnouserreadDataFlux">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmnouserreaddatapress" domainObjectName="FmnouserreadDataPress">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmnousertension" domainObjectName="FmnouserTension">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmreaddataflux" domainObjectName="FmreadDataFlux">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmreaddatapress" domainObjectName="FmreadDataPress">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmreaddatarunflux" domainObjectName="FmreadDataRunFlux">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_fmtension" domainObjectName="FmTension">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_metertype" domainObjectName="MeterType">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_org" domainObjectName="Org">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_processapplication" domainObjectName="ProcessApplication">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_processinstall" domainObjectName="ProcessInstall">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_processreceived" domainObjectName="ProcessReceived">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_processstorage" domainObjectName="ProcessStorage">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptday" domainObjectName="RptDay">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rpthour" domainObjectName="RptHour">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptmonth" domainObjectName="RptMonth">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptpredictionday" domainObjectName="RptPredictionDay">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptpredictionhour" domainObjectName="RptPredictionHour">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptpredictionmonth" domainObjectName="RptPredictionMonth">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptpredictionweek" domainObjectName="RptPredictionWeek">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptpredictionyear" domainObjectName="RptPredictionYear">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptweek" domainObjectName="RptWeek">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_rptyear" domainObjectName="RptYear">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_signalqualityday" domainObjectName="SignalQualityDay">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_signalqualitymonth" domainObjectName="SignalQualityXonth">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_signalqualityweek" domainObjectName="SignalQualityWeek">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_signalqualityyear" domainObjectName="SignalQualityYear">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_simdata" domainObjectName="SimData">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_unitinfo" domainObjectName="UnitInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <!--<table schema="" tableName="tw_userinfo" domainObjectName="UserInfo">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+
+
+
+
+
+
         <!--<table schema="" tableName="base_user" domainObjectName="User">-->
+
+
             <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
         <!--</table>-->
         <!--<table schema="" tableName="base_permission" domainObjectName="Permission">-->
