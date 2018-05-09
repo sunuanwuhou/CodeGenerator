@@ -5,6 +5,7 @@ import ${packageName}.entity.${domainName};
 /**
 * @author qiumeng
 * @Description:${domainNameDesc}请求参数
+* @date ${time}
 */
 public class ${domainName}Form extends ${domainName}{
 

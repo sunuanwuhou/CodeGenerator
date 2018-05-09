@@ -15,14 +15,14 @@ import java.util.Properties;
  * created by zhoufei 20180307
  * 生成Controller
  */
-public class Generator {
+public class CSIMain {
 
     //代码生成的路径
     private static String genFilePath = "E:\\IdeaProject\\git\\CodeGenerator\\src\\main\\java\\cfs\\";
     // 实体类名数组
-    private static String[] domainName1 = {"File"};
+    private static String[] domainName1 = {"Permission"};
     //实体类描述
-    private static String[] domainNameDesc1 = {"存储文件"};
+    private static String[] domainNameDesc1 = {"权限"};
     //类作者
     private static  String auth="qiumeng";
     //生成类时间
