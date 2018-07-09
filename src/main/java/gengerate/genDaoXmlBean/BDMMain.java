@@ -18,7 +18,7 @@ import java.util.List;
  * @author shi_senlin
  *
  */
-public class GeneratorMain {
+public class BDMMain {
 	public static void main(String[] args) {
 
 		try {
