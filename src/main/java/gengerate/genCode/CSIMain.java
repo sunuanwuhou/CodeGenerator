@@ -20,15 +20,15 @@ public class CSIMain {
     //代码生成的路径
     private static String genFilePath = "E:\\IdeaProject\\git\\CodeGenerator\\src\\main\\java\\cfs\\";
     // 实体类名数组
-    private static String[] domainName1 = {"FmLife"};
+    private static String[] domainName1 = {"AreaMapBounds","DmaExpressLog"};
     //实体类描述
-    private static String[] domainNameDesc1 = {"水表生命周期"};
+    private static String[] domainNameDesc1 = {"DMA区域坐标","DMA历史公式"};
     //类作者
     private static  String auth="qiumeng";
     //生成类时间
     private static  String time=DateUtils.getStringDate();
     // 包名
-    private static String packageName = "com.anso.meter.server.web";
+    private static String packageName = "com.anso.dma.server.web";
 
     static String templateDir = "\\src\\main\\resources\\vm\\";
     private static int len = domainName1.length;

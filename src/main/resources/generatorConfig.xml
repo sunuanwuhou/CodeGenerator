@@ -1,281 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 
 <generatorConfiguration>
-    <context id="testTables" targetRuntime="MyBatis3">
-        <property name="javaFileEncoding" value="UTF-8"/>
-        <commentGenerator>
-            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true" />
-        </commentGenerator>
-        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost/think-water" userId="root"
-                        password="root">
-        </jdbcConnection>
-        <!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
-            connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg"
-            userId="yycg"
-            password="yycg">
-        </jdbcConnection> -->
+    <!-- 数据库驱动包路径 -->
+    <!--<classPathEntry location="D:/STS/apache-maven-3.3.9/repo/com/oracle/ojdbc14/10.2.0.4.0/ojdbc14-10.2.0.4.0.jar" />-->
+    <!--<classPathEntry location="D:/STS/apache-maven-3.3.9/repo/com/oracle/ojdbc6/11.2.0.4.0/ojdbc6-11.2.0.4.0.jar"/>-->
 
-        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
-            NUMERIC 类型解析为java.math.BigDecimal -->
-        <javaTypeResolver>
+    <context id="context1" targetRuntime="MyBatis3">
+        <!-- 运行环境配置 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!-- 生成注释配置 -->
+        <commentGenerator type="">
+            <!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true" />
+            <!-- 数据库注释支持 -->
+            <property name="addRemarkComments" value="true"/>
+            <!-- 时间格式设置 -->
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        </commentGenerator>
+
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://localhost/think-water" userId="root"-->
+                        <!--password="root">-->
+        <!--</jdbcConnection>-->
+
+
+        <!-- 连接数据库 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@10.0.0.116:1521:water" userId="c##dma" password="root2018" />
+        <!-- 数值类型数据是否全部使用BigDecimal类型 -->
+        <javaTypeResolver type="utils.MyJavaTypeResolverDefaultImpl">
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
-
-        <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.anso.meter.server.web.entity"
-                            targetProject="src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <!-- 生成po类 -->
+        <javaModelGenerator targetPackage="com.anso.dma.server.web.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
-            <!-- 从数据库返回的值被清理前后的空格 -->
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
-        <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.anso.meter.server.xml"
-                         targetProject="src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <!-- 生成xml映射文件 -->
+        <sqlMapGenerator targetPackage="com.anso.dma.server.xml" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
+            <property name="isMergeable" value="false" />
         </sqlMapGenerator>
-        <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.anso.meter.server.web.dao"
-                             targetProject="src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+        <!-- 生成dao类 -->
+        <javaClientGenerator targetPackage="com.anso.dma.server.web.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-        <table schema="" tableName="tw_user_info" domainObjectName="UserInfo">
-        <generatedKey column="id" sqlStatement="JDBC"/>
-    </table>
-
-        <!--<table schema="" tableName="tw_accounts_info" domainObjectName="AccountsInfo">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_dma_meter_dfn" domainObjectName="DmaMeterDfn">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_dma_meter_info" domainObjectName="DmaMeterInfo">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_dma_rpt_day_flux1" domainObjectName="DmaRptDayFlux1">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_dma_rpt_day_flux7" domainObjectName="DmaRptDayFlux7">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_flux_run_data" domainObjectName="FluxRunData">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_battery_change" domainObjectName="FmBatteryChange">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_flux_run_rpt_day" domainObjectName="FluxRunRptDay">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_check_first" domainObjectName="FmCheckFirst">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_check_plan" domainObjectName="FmCheckPlan">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_install_info" domainObjectName="FmInstallInfo">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_sim_data" domainObjectName="FmSimData">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_last_data" domainObjectName="LastData">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_process_check_project" domainObjectName="ProcessCheckProject">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_process_received" domainObjectName="ProcessReceived">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_process_storage" domainObjectName="ProcessStorage">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_unit_info" domainObjectName="UnitInfo">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_user_info" domainObjectName="UserInfo">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_signal_quality_day" domainObjectName="SignalQualityDay">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_signal_quality_month" domainObjectName="SignalQualityMonth">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_signal_quality_week" domainObjectName="SignalQualityWeek">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_signal_quality_year" domainObjectName="SignalQualityYear">-->
-        <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-
-
-        <!-- 指定数据库表 think-water -->
-
-
-
-
-        <!--<table schema="" tableName="tw_datalog" domainObjectName="DataLog">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_datalog_bak" domainObjectName="DataLogBak">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-
-
-        <!--<table schema="" tableName="tw_event" domainObjectName="Event">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_event_dma" domainObjectName="EventDma">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_event_param" domainObjectName="EventParam">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_event_type" domainObjectName="EventType">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_flux_data" domainObjectName="FluxData">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_flux_process_s1" domainObjectName="FluxProcessS1">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_flux_process_s2" domainObjectName="FluxProcessS2">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-
-
-        <!--<table schema="" tableName="tw_fm_check" domainObjectName="FmCheck">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_checkfirst" domainObjectName="FmCheckFirst">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_fm_info" domainObjectName="FmInfo">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_fm_simdata" domainObjectName="FmSimData">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_tension" domainObjectName="FmTension">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_fm_type" domainObjectName="FmType">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_org" domainObjectName="Org">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_plan" domainObjectName="TwPlan">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_press_data" domainObjectName="PressData">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_application" domainObjectName="ProcessApplication">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-        <!--<table schema="" tableName="tw_process_examine" domainObjectName="ProcessExamine">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_install" domainObjectName="ProcessInstall">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_install_info" domainObjectName="ProcessInstallInfo">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_material" domainObjectName="ProcessMaterial">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_material_get" domainObjectName="ProcessMaterialGet">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_scene" domainObjectName="ProcessScene">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_scene_material" domainObjectName="ProcessSceneMaterial">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_process_scene_usewater" domainObjectName="ProcessSceneUseWater">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-
-
-        <!--<table schema="" tableName="tw_rpt_day" domainObjectName="RptDay">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_hour" domainObjectName="RptHour">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_month" domainObjectName="RptMonth">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_prediction_day" domainObjectName="RptPredictionDay">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_prediction_hour" domainObjectName="RptPredictionHour">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_prediction_month" domainObjectName="RptPredictionMonth">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_prediction_week" domainObjectName="RptPredictionWeek">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_prediction_year" domainObjectName="RptPredictionYear">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_week" domainObjectName="RptWeek">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-        <!--<table schema="" tableName="tw_rpt_year" domainObjectName="RptYear">-->
-            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
-        <!--</table>-->
-
-
-
-
-
-
-
-        <!--去掉Mybatis Generator生成的一堆 example
-        <table schema="general" tableName="tb_table_name" domainObjectName="EntityName"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
+        <!-- 需要生产po类的表 -->
+        <table schema="" tableName="TW_DMA_METER_INFO" domainObjectName="DmaMeterInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!-- 主键生成方式 -->
+            <generatedKey column="id" sqlStatement="select seq_t_user.nextval from dual" identity="true" />
+            <!-- 列名去除前缀 -->
+            <!--<columnRenamingRule searchString="^[^_]+" replaceString="" />-->
+            <columnOverride column="ID" javaType="Integer"></columnOverride>
+            <columnOverride column="AGE" javaType="Integer"></columnOverride>
         </table>
-        -->
-
-        <!-- 有些表的字段需要指定java类型
-         <table schema="" tableName="">
-            <columnOverride column="" javaType="" />
-        </table> -->
     </context>
-
 </generatorConfiguration>
